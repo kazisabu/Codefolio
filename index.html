@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kazi Sabbir</title>
+  <style>
+    /* ===== Base Styles ===== */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    body {
+      background-color: #010101; /* full black terminal */
+      color: #33ff33;          /* green terminal text */
+      font-family: 'VT323', Consolas, monospace;
+      margin: 0;
+      padding: 20px;
+    }
+
+    a {
+      color: #4EC9B0;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+    }
+
+    .section {
+      white-space: pre-wrap;
+      font-size: 22px;
+    }
+
+    .green  { color: #6A9955; }   /* comments */
+    .blue   { color: #569CD6; }   /* types, keywords */
+    .purple { color: #CE9178; }   /* strings */
+    .cyan   { color: #4EC9B0; }   /* boolean, params */
+    .orange { color: #DCDCAA; }   /* variables, functions */
+
+    .terminal-bar {
+      background-color: #1e1e1e;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      position: relative;
+      font-size: 19px;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      display: inline-block;
+    }
+
+    .terminal-dot.red    { background-color: #ff5f56; }
+    .terminal-dot.yellow { background-color: #ffbd2e; }
+    .terminal-dot.green  { background-color: #27c93f; }
+
+    .profile-pic {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      object-fit: cover;
+      border: 5px solid rgb(0, 101, 101);
+      border-radius: 10px;
+    }
+
+    /* ===== Responsive Breakpoints ===== */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+/* Default size for desktop */
+      .section, .terminal-bar {
+        font-size: 18px;
+    }
+
+/* Mobile boost: more readable */
+    @media (max-width: 900px) {
+      .section, .terminal-bar {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section, .terminal-bar {
+        font-size: 22px;
+      }
+    }
+
+      .profile-pic {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border: 5px solid rgb(0, 101, 101);
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Terminal Header Bar -->
+  <div class="terminal-bar">
+    <span class="terminal-dot red"></span>
+    <span class="terminal-dot yellow"></span>
+    <span class="terminal-dot green"></span>
+    <span>/home/sabu/whoami</span>
+  </div>
+
+  <!-- GRID LAYOUT -->
+  <div class="container">
+
+    <!-- Left Section -->
+    <div>
+      <br>
+      <img src="mypic.jpg" alt="My photo" class="profile-pic">
+
+      <div class="section">
+<span class="blue">public enum</span> <span class="orange">PLATFORMS</span> {
+  &nbsp;&nbsp;Windows,
+  &nbsp;&nbsp;Linux,
+  &nbsp;&nbsp;Mobile
+}
+
+<span class="blue">public enum</span> <span class="orange">SKILLS</span> {
+  &nbsp;&nbsp;Security Researcher,
+  &nbsp;&nbsp;Malware Analyst,
+  &nbsp;&nbsp;Red Teaming,
+  &nbsp;&nbsp;Bug Bounty Hunter,
+  &nbsp;&nbsp;CTF Player
+}
+
+<span class="blue">public enum</span> <span class="orange">LANGUES</span> {
+  &nbsp;&nbsp;ENGLISH <span class="green">// Fluent</span>,
+  &nbsp;&nbsp;BANGLA <span class="green">// Native</span>,
+  &nbsp;&nbsp;URDHU/HINDI <span class="green">// Conversational</span>
+}
+
+<span class="blue">public static class</span> <span class="orange">SOCIAL_MEDIA</span> {
+  <span class="blue">public void</span> StudioPREMA() {
+    <span class="blue">var</span> Linkedin = <a href="https://linkedin.com/in/kazisabbir" target="_blank">"Click_Me"</a>;
+    <span class="blue">var</span> Medium = <a href="https://medium.com/@kazixabbir/lists" target="_blank">"Click_Me"</a>;
+    <span class="blue">var</span> Github = <a href="https://github.com/kazisabu" target="_blank">"Click_Me"</a>;
+    <span class="green">/*
+    Those are my social media handles
+    for any queries Feel free to DM me.
+    */</span>
+  }
+}
+      </div>
+    </div>
+          
+    <!-- Right Section -->
+
+    <div class="section">
+<span class="green">
+/// &lt;summary&gt;
+/// Hello, I’m Kazi_sabbir — a passionate and driven Cybersecurity Specialist.
+/// Skilled in Ethical Hacking, Penetration Testing, and Digital Forensics.
+/// Focused on identifying vulnerabilities before threat actors do.
+/// Proven track record in Red Team assessments and threat emulation.
+/// Fast learner, disciplined, and adaptable in high-pressure environments.
+/// Eager to contribute to security-first organizations and mission-critical projects.
+/// Open to collaboration, freelance, or full-time roles globally.
+/// &lt;/summary&gt;
+</span><br>
+
+<span class="blue">public class</span> <span class="orange">INFORMATION</span> {<br>
+  <span class="blue">public string</span> NAME = <span class="purple">"Kazi Sabbir"</span>;
+  <span class="blue">public string</span> TITLE = <span class="purple">"Security Engineer"</span>;
+  <span class="blue">public string</span> EMAIL = <span class="purple">"kazixabbir@gmail.com"</span>;
+  <span class="blue">public string[]</span> LOCATION = {<span class="purple">"Dhaka, Bangladesh"</span>};
+  <span class="blue">public int</span> AGE = 24;<br>
+}
+<span class="blue">private void</span> <span class="orange">UNIVERSITY</span>() {<br>
+  <span class="blue">var</span> _Degree = <span class="cyan">"BSc In CSE"</span>;
+  <span class="blue">var</span> _Duration = <span class="cyan">"Jan 2025 - Present"</span>;
+  <span class="blue">var</span> _Focus = <span class="cyan">"Programming, Hacking, Networking"</span>;<br>
+}
+
+<span class="blue">public class</span> <span class="orange">EXPERIENCE</span> {<br>
+  <span class="blue">public string</span> Role1 = <span class="purple">"Trainer at BinaryGuardian"</span>;
+  <span class="blue">public string</span> Role2 = <span class="purple">"Trainer at Basify"</span>;
+  <span class="blue">public string</span> Role3 = <span class="purple">"CTO at BinaryShilders"</span>;
+  <span class="blue">public string[]</span> CTF = {<span class="purple">"Pirates of The Dead Flag"</span>};
+  <span class="blue">public int</span> AGE = 24;<br>
+}<br>
+    </div>
+  </div>
+</body>
+</html>
