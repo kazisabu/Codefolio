@@ -1,201 +1,316 @@
+
+<!-- Feel free to customize it and use it in your profile:3
+    The project is made only for fun no hard feelings<3
+ -->
+
+
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kazi Sabbir</title>
   <style>
-    /* ===== Base Styles ===== */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-    body {
-      background-color: #010101; /* full black terminal */
-      color: #33ff33;          /* green terminal text */
-      font-family: 'VT323', Consolas, monospace;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
 
-    a {
-      color: #4EC9B0;
-      text-decoration: none;
+    html, body {
+      height: 100%;
+      background: black;
+      color: #00ffcc;
+      font-family: 'Consolas', monospace;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: -1;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: #111;
+      font-size: 14px;
+      border-bottom: 2px solid #00ffcc44;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .terminal-bar::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .terminal-bar::-webkit-scrollbar-thumb {
+      background-color: #1ae00040;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      margin-right: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+
+    .typewriter {
+      display: inline-block;
+      white-space: nowrap;
+      animation: typing 4s steps(50, end), blink-caret .8s step-end infinite;
+      overflow: hidden;
+      border-right: 2px solid #00ffcc;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent }
+      50% { border-color: #00ffcc }
     }
 
     .container {
-      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      max-width: 1400px;
       margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
       gap: 20px;
     }
 
     .section {
+      flex: 1 1 48%;
+      min-width: 300px;
+      background-color: rgba(17, 17, 17, 0.93);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #00ffcc33;
+      box-shadow: 0 0 15px #00ffcc66;
+      transition: transform 0.4s;
+      overflow-x: auto;
+    }
+
+    .section:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 25px #00ffeeaa;
+    }
+
+    .section pre {
       white-space: pre-wrap;
-      font-size: 22px;
+      font-size: 14.5px;
+      word-break: break-word;
     }
-
-    .green  { color: #6A9955; }   /* comments */
-    .blue   { color: #569CD6; }   /* types, keywords */
-    .purple { color: #CE9178; }   /* strings */
-    .cyan   { color: #4EC9B0; }   /* boolean, params */
-    .orange { color: #DCDCAA; }   /* variables, functions */
-
-    .terminal-bar {
-      background-color: #1e1e1e;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      position: relative;
-      font-size: 21px;
-    }
-
-    .terminal-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 8px;
-      display: inline-block;
-    }
-
-    .terminal-dot.red    { background-color: #ff5f56; }
-    .terminal-dot.yellow { background-color: #ffbd2e; }
-    .terminal-dot.green  { background-color: #27c93f; }
 
     .profile-pic {
       width: 100%;
       max-width: 200px;
-      height: auto;
-      object-fit: cover;
-      border: 5px solid rgb(0, 101, 101);
+      display: block;
+      border: 4px solid #00ffcc;
       border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 30px #00ffee55;
+      transition: all 0.3s ease;
     }
 
-    /* ===== Responsive Breakpoints ===== */
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #00ffcc;
+    }
+
+    a:hover {
+      color: #00ffaa;
+    }
+
+    .blue   { color: #4FC1FF; }
+    .green-text  {
+	  color: #00ff9c;
+	  background: transparent !important;
+	  }
+    .purple { color: #FF73FA; }
+    .cyan   { color: #00ffff; }
+    .orange { color: #FFD580; }
+
     @media (max-width: 900px) {
-      .container {
-        grid-template-columns: 1fr;
+      .section {
+        flex: 1 1 100%;
       }
 
-/* Default size for desktop */
-      .section, .terminal-bar {
-        font-size: 18px;
-    }
+      .terminal-bar {
+        font-size: 12.5px;
+        padding: 10px;
+      }
 
-/* Mobile boost: more readable */
-    @media (max-width: 900px) {
-      .section, .terminal-bar {
-        font-size: 20px;
+      .typewriter {
+        font-size: 13px;
+      }
+
+      .section pre {
+        white-space: pre;
+		overflow-x: auto;
+		word-wrap: normal;
+		font-size: 14.5px;
       }
     }
-
-    @media (max-width: 480px) {
-      .section, .terminal-bar {
-        font-size: 22px;
+	  .section pre::-webkit-scrollbar {
+		height: 6px;
+	  }
+	  .section pre::-webkit-scrollbar-thumb {
+		background: #00ffcc55;
+		border-radius: 4px;
+	  }
+    @media (max-width: 600px) {
+      .typewriter {
+        font-size: 12px;
       }
-    }
 
-      .profile-pic {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        border: 5px solid rgb(0, 101, 101);
-        border-radius: 10px;
+      .section pre {
+        font-size: 12.5px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Terminal Header Bar -->
-  <div class="terminal-bar">
-    <span class="terminal-dot red"></span>
-    <span class="terminal-dot yellow"></span>
-    <span class="terminal-dot green"></span>
-    <span>/home/sabu/whoami</span>
+<!-- MATRIX RAIN BACKGROUND -->
+<canvas id="matrixRain"></canvas>
+
+<!-- Terminal Title Bar -->
+<div class="terminal-bar">
+  <span class="terminal-dot red"></span>
+  <span class="terminal-dot yellow"></span>
+  <span class="terminal-dot green"></span>
+  <span class="typewriter">~/terminal_login → ./recon.sh --full_profile</span>
+</div>
+
+<!-- Content Sections -->
+<div class="container">
+  <!-- Left Panel -->
+  <div class="section">
+    <img src="mypic.jpg" alt="Kazi Sabbir" class="profile-pic">
+<pre>
+<span class="blue">public enum</span> <span class="orange">PLATFORMS</span> <br>{
+<span class="green-text">¦</span>  Windows,
+<span class="green-text">¦</span>  Linux,
+<span class="green-text">¦</span>  Mobile
+}
+
+<span class="blue">public enum</span> <span class="orange">SKILLS</span> <br>{
+<span class="green-text">¦</span>  Cyber Security Researcher,
+<span class="green-text">¦</span>  Ethical Hacker,
+<span class="green-text">¦</span>  Bug Bounty Hunter,
+<span class="green-text">¦</span>  Red Teamer,
+<span class="green-text">¦</span>  CTF Player
+}
+
+<span class="blue">public enum</span> <span class="orange">LANGUAGE</span> <br>{
+<span class="green-text">¦</span>  ENGLISH    <span class="green-text">// Fluent</span>,
+<span class="green-text">¦</span>  BANGLA     <span class="green-text">// Native</span>,
+<span class="green-text">¦</span>  URDU/HINDI <span class="green-text">// Conversational</span>
+}
+
+<span class="blue">public static class</span> <span class="orange">SOCIAL_MEDIA</span> <br>{
+<span class="green-text">¦</span>  <span class="blue">public void</span> Connect() <br><span class="green-text">¦</span>  {
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> LinkedIn = <a href="https://linkedin.com/in/kazixabbir" target="_blank">"Click_Me"</a>;
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> Medium   = <a href="https://medium.com/@kazixabbir" target="_blank">"Click_Me"</a>;
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> GitHub   = <a href="https://github.com/kazisabu" target="_blank">"Click_Me"</a>;
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="green-text">/*
+<span class="green-text">¦</span>  <span class="green-text">¦</span>    Feel free to dm me for anything.
+<span class="green-text">¦</span>  <span class="green-text">¦</span>    hackers wake's all night .
+<span class="green-text">¦</span>  <span class="green-text">¦</span> */</span>
+<span class="green-text">¦</span>  }
+}
+</pre>
   </div>
 
-  <!-- GRID LAYOUT -->
-  <div class="container">
+  <!-- Right Panel -->
+  <div class="section">
+<pre>
+<span class="green-text">/// &lt;summary&gt;
+/// Hello there, I am kazi sabbir, 
+/// Cybersecurity Researcher & Ethical Hacker. 
+/// Specialized in Red Teaming, Web App Security, and OSINT.  
+/// Cyber Security Researcher | Bug Bounty Hunter | CTF Player. 
+/// Skilled in Vulnerability Analysis, Penetration Testing, and Threat Hunting. 
+/// Turning vulnerabilities into opportunities for stronger defense.
+/// Always available for pwnage. 
+/// &lt;/summary&gt;</span>
 
-    <!-- Left Section -->
-    <div>
-      <br>
-      <img src="mypic.jpg" alt="My photo" class="profile-pic">
-
-      <div class="section">
-<span class="blue">public enum</span> <span class="orange">PLATFORMS</span> {
-  &nbsp;&nbsp;Windows,
-  &nbsp;&nbsp;Linux,
-  &nbsp;&nbsp;Mobile
+<span class="blue">public class</span> <span class="cyan">INFORMATION</span> <br>{
+<span class="green-text">¦</span>  <span class="blue">public string</span> NAME = <span class="purple">"Kazi Sabbir"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string</span> TITLE = <span class="purple">"Security Researcher"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string</span> EMAIL = <span class="purple">"kazixabbir@gmail.com"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string[]</span> LOCATION = {<span class="purple">"Dhaka, Bangladesh"</span>};
+<span class="green-text">¦</span>  <span class="blue">public int</span> AGE = <span class="green-text">25</span>;
 }
 
-<span class="blue">public enum</span> <span class="orange">SKILLS</span> {
-  &nbsp;&nbsp;Security Researcher,
-  &nbsp;&nbsp;Malware Analyst,
-  &nbsp;&nbsp;Red Teaming,
-  &nbsp;&nbsp;Bug Bounty Hunter,
-  &nbsp;&nbsp;CTF Player
+<span class="blue">public partial class</span> <span class="cyan">FORMATIONS</span> : <span class="orange">Higher_Education</span> <br>{
+<span class="green-text">¦</span>  <span class="blue">private void</span> ICAN(<span class="blue">string[]</span> <span class="purple">_Degrees</span>) <br><span class="green-text">¦</span>  {
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> _Level = <span class="cyan">"Bachelor"</span>;
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> _Duration = <span class="cyan">"Jan 2025 - Present"</span>;
+<span class="green-text">¦</span>  <span class="green-text">¦</span>  <span class="blue">var</span> _Focus = <span class="cyan">"Programming, Hacking, Networking"</span>;
+<span class="green-text">¦</span>  }
 }
 
-<span class="blue">public enum</span> <span class="orange">LANGUES</span> {
-  &nbsp;&nbsp;ENGLISH <span class="green">// Fluent</span>,
-  &nbsp;&nbsp;BANGLA <span class="green">// Native</span>,
-  &nbsp;&nbsp;URDU/HINDI <span class="green">// Conversational</span>
+<span class="blue">public class</span> <span class="cyan">EXPERIENCE</span> <br>{
+<span class="green-text">¦</span>  <span class="blue">public string</span> Role1 = <span class="purple">"Security Researcher @ HackerOne"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string</span> Role2 = <span class="purple">"Security Researcher @ Bugcrowd"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string</span> Role3 = <span class="purple">"Trainer At @ Basify"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string</span> Role4 = <span class="purple">"CTO At @ BinaryShilders"</span>;
+<span class="green-text">¦</span>  <span class="blue">public string[]</span> CTF = {<span class="purple">"Pirates of The Dead Flag"</span>};
+<span class="green-text">¦</span>  <span class="blue">public int</span> AGE = <span class="green-text">25</span>;
 }
+</pre>
+  </div>
+</div>
 
-<span class="blue">public static class</span> <span class="orange">SOCIAL_MEDIA</span> {
-  <span class="blue">public void</span> StudioPREMA() {
-    <span class="blue">var</span> Linkedin = <a href="https://linkedin.com/in/kazisabbir" target="_blank">"Click_Me"</a>;
-    <span class="blue">var</span> Medium = <a href="https://medium.com/@kazixabbir/lists" target="_blank">"Click_Me"</a>;
-    <span class="blue">var</span> Github = <a href="https://github.com/kazisabu" target="_blank">"Click_Me"</a>;
-    <span class="green">/*
-    Those are my social media handles
-    for any queries Feel free to DM me.
-    */</span>
+<!-- Matrix JavaScript -->
+<script>
+  const canvas = document.getElementById('matrixRain');
+  const ctx = canvas.getContext('2d');
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+
+  const matrix = "01".split("");
+  const fontSize = 14;
+  const columns = canvas.width / fontSize;
+  const drops = new Array(Math.floor(columns)).fill(1);
+
+  function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#00ffcc";
+    ctx.font = fontSize + "px Consolas";
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = matrix[Math.floor(Math.random() * matrix.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+
+      drops[i]++;
+    }
   }
-}
-      </div>
-    </div>
-          
-    <!-- Right Section -->
 
-    <div class="section">
-<span class="green">
-/// &lt;summary&gt;
-/// Hello, I’m Kazi_sabbir — a passionate and driven Cybersecurity Specialist.
-/// Skilled in Ethical Hacking, Penetration Testing, and Digital Forensics.
-/// Focused on identifying vulnerabilities before threat actors do.
-/// Proven track record in Red Team assessments and threat emulation.
-/// Fast learner, disciplined, and adaptable in high-pressure environments.
-/// Eager to contribute to security-first organizations and mission-critical projects.
-/// Open to collaboration, freelance, or full-time roles globally.
-/// &lt;/summary&gt;
-</span><br>
+  setInterval(drawMatrix, 50);
+</script>
 
-<span class="blue">public class</span> <span class="orange">INFORMATION</span> {<br>
-  <span class="blue">public string</span> NAME = <span class="purple">"Kazi Sabbir"</span>;
-  <span class="blue">public string</span> TITLE = <span class="purple">"Security Engineer"</span>;
-  <span class="blue">public string</span> EMAIL = <span class="purple">"kazixabbir@gmail.com"</span>;
-  <span class="blue">public string[]</span> LOCATION = {<span class="purple">"Dhaka, Bangladesh"</span>};
-  <span class="blue">public int</span> AGE = 24;<br>
-}
-<span class="blue">private void</span> <span class="orange">UNIVERSITY</span>() {<br>
-  <span class="blue">var</span> _Degree = <span class="cyan">"BSc In CSE"</span>;
-  <span class="blue">var</span> _Duration = <span class="cyan">"Jan 2025 - Present"</span>;
-  <span class="blue">var</span> _Focus = <span class="cyan">"Programming, Hacking, Networking"</span>;<br>
-}
-
-<span class="blue">public class</span> <span class="orange">EXPERIENCE</span> {<br>
-  <span class="blue">public string</span> Role1 = <span class="purple">"Trainer at BinaryGuardian"</span>;
-  <span class="blue">public string</span> Role2 = <span class="purple">"Trainer at Basify"</span>;
-  <span class="blue">public string</span> Role3 = <span class="purple">"CTO at BinaryShilders"</span>;
-  <span class="blue">public string[]</span> CTF = {<span class="purple">"Pirates of The Dead Flag"</span>};
-  <span class="blue">public int</span> AGE = 24;<br>
-}<br>
-    </div>
-  </div>
 </body>
 </html>
