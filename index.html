@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kazi Sabbir | Security Analyst & Bug Bounty Hunter</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -40,6 +43,67 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            cursor: none;
+            /* Hide default cursor for custom one */
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            position: fixed;
+            border-radius: 50%;
+            z-index: 3000;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            position: fixed;
+            border-radius: 50%;
+            z-index: 2999;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease-out;
+            opacity: 0.5;
+        }
+
+        /* Hover states for cursor */
+        body:active .cursor-dot {
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        body:active .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .cursor-hover .cursor-dot {
+            width: 30px;
+            height: 30px;
+            opacity: 0.3;
+        }
+
+        .cursor-hover .cursor-outline {
+            width: 60px;
+            height: 60px;
+            opacity: 0.8;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-1);
+            z-index: 2001;
+            box-shadow: var(--glow-primary);
         }
 
         /* Scrollbar */
@@ -74,7 +138,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(10, 255, 239, 0.05) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(255, 0, 85, 0.03) 0%, transparent 50%);
@@ -86,7 +150,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -94,8 +158,13 @@
         }
 
         @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(50px);
+            }
         }
 
         .floating-particles {
@@ -115,10 +184,25 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+
+            0%,
+            100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* Navigation */
@@ -168,8 +252,16 @@
         }
 
         @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
         }
 
         .nav-links {
@@ -250,6 +342,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -275,8 +368,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
         .hero-title {
@@ -587,9 +687,17 @@
             border-radius: 50%;
         }
 
-        .terminal-dot.red { background: #ff5f56; }
-        .terminal-dot.yellow { background: #ffbd2e; }
-        .terminal-dot.green { background: #27ca3f; }
+        .terminal-dot.red {
+            background: #ff5f56;
+        }
+
+        .terminal-dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .terminal-dot.green {
+            background: #27ca3f;
+        }
 
         .terminal-title {
             margin-left: 1rem;
@@ -731,8 +839,13 @@
         }
 
         @keyframes lineGrow {
-            from { height: 0; }
-            to { height: 100%; }
+            from {
+                height: 0;
+            }
+
+            to {
+                height: 100%;
+            }
         }
 
         .experience-item {
@@ -1071,14 +1184,16 @@
             gap: 3rem;
         }
 
-        .bb-card, .ctf-card {
+        .bb-card,
+        .ctf-card {
             background: var(--bg-card);
             border-radius: 20px;
             padding: 2.5rem;
             border: 1px solid var(--border-color);
         }
 
-        .bb-card h3, .ctf-card h3 {
+        .bb-card h3,
+        .ctf-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             display: flex;
@@ -1086,7 +1201,8 @@
             gap: 0.75rem;
         }
 
-        .bb-card h3 i, .ctf-card h3 i {
+        .bb-card h3 i,
+        .ctf-card h3 i {
             color: var(--primary);
         }
 
@@ -1112,7 +1228,8 @@
             color: var(--primary);
         }
 
-        .bb-content p, .ctf-content p {
+        .bb-content p,
+        .ctf-content p {
             color: var(--text-secondary);
             margin-bottom: 1rem;
         }
@@ -1165,7 +1282,7 @@
             margin-bottom: 1rem;
         }
 
-        .contact-info > p {
+        .contact-info>p {
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
@@ -1474,9 +1591,42 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Form Status Messages */
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(255, 0, 85, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
     </style>
 </head>
+
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Background Animation -->
     <div class="bg-animation">
         <div class="grid-bg"></div>
@@ -1492,6 +1642,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1520,16 +1671,18 @@
                     <span class="typing-text" id="typingText"></span>
                 </p>
                 <p class="hero-description">
-                    Computer Science Engineering student and Security Researcher with hands-on experience in penetration testing, vulnerability assessment, bug bounty research, and CTF competitions.
+                    Computer Science Engineering student and Security Researcher with hands-on experience in penetration
+                    testing, vulnerability assessment, bug bounty research, and CTF competitions.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i>
                         Get In Touch
                     </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <i class="fas fa-code"></i>
-                        View Projects
+                    <a href="https://raw.githubusercontent.com/kazisabu/Codefolio/3ee00244ba5409fec75ab1563c95118b8d12e5ff/Resume_kazi_Sabbir%20(1).pdf"
+                        class="btn btn-secondary" target="_blank" download="Kazi_Sabbir_Resume.pdf">
+                        <i class="fas fa-download"></i>
+                        Download Resume
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -1571,16 +1724,22 @@
             <div class="section-header">
                 <span class="section-tag">&lt;about&gt;</span>
                 <h2 class="section-title">About <span>Me</span></h2>
-                <p class="section-subtitle">Learn more about my background, interests, and what drives me in the cybersecurity field.</p>
+                <p class="section-subtitle">Learn more about my background, interests, and what drives me in the
+                    cybersecurity field.</p>
             </div>
             <div class="about-grid">
                 <div class="about-content animate-on-scroll">
                     <h3>Security Researcher & CTF Enthusiast</h3>
                     <p>
-                        I'm a passionate Computer Science Engineering student with a deep interest in offensive security. My journey in cybersecurity started with curiosity about how systems can be compromised and has evolved into a professional pursuit of making the digital world more secure.
+                        I'm a passionate Computer Science Engineering student with a deep interest in offensive
+                        security. My journey in cybersecurity started with curiosity about how systems can be
+                        compromised and has evolved into a professional pursuit of making the digital world more secure.
                     </p>
                     <p>
-                        With experience in web application security, Active Directory attacks, network forensics, and SOC fundamentals, I bring a comprehensive approach to security assessments. I'm also the founder of CTF Team "Pirates of The Dead Flag" and actively participate in national and international competitions.
+                        With experience in web application security, Active Directory attacks, network forensics, and
+                        SOC fundamentals, I bring a comprehensive approach to security assessments. I'm also the founder
+                        of CTF Team "Pirates of The Dead Flag" and actively participate in national and international
+                        competitions.
                     </p>
                     <div class="about-highlights">
                         <div class="highlight-item">
@@ -1655,7 +1814,8 @@
                         <i class="fas fa-globe"></i>
                     </div>
                     <h3>Web Application Pentesting</h3>
-                    <p>Comprehensive testing of web applications for vulnerabilities including OWASP Top 10, business logic flaws, and authentication bypasses.</p>
+                    <p>Comprehensive testing of web applications for vulnerabilities including OWASP Top 10, business
+                        logic flaws, and authentication bypasses.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Burp Suite</span>
                         <span class="skill-tag">SQLi</span>
@@ -1668,7 +1828,8 @@
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3>Vulnerability Assessment (VAPT)</h3>
-                    <p>End-to-end vulnerability assessment and penetration testing activities including scoping, exploitation, validation, and reporting.</p>
+                    <p>End-to-end vulnerability assessment and penetration testing activities including scoping,
+                        exploitation, validation, and reporting.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Nessus</span>
                         <span class="skill-tag">Nmap</span>
@@ -1680,7 +1841,8 @@
                         <i class="fas fa-server"></i>
                     </div>
                     <h3>Active Directory Attacks</h3>
-                    <p>Expertise in AD enumeration, privilege escalation, lateral movement, and persistence techniques in enterprise environments.</p>
+                    <p>Expertise in AD enumeration, privilege escalation, lateral movement, and persistence techniques
+                        in enterprise environments.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">BloodHound</span>
                         <span class="skill-tag">Mimikatz</span>
@@ -1692,7 +1854,8 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>Network Forensics</h3>
-                    <p>Analyzing network traffic to identify attack patterns, data exfiltration, and malicious activities using packet analysis tools.</p>
+                    <p>Analyzing network traffic to identify attack patterns, data exfiltration, and malicious
+                        activities using packet analysis tools.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Wireshark</span>
                         <span class="skill-tag">Tshark</span>
@@ -1704,7 +1867,8 @@
                         <i class="fas fa-bug"></i>
                     </div>
                     <h3>Bug Bounty Research</h3>
-                    <p>Active participation in bug bounty programs with experience in vulnerability triage, PoC development, and responsible disclosure.</p>
+                    <p>Active participation in bug bounty programs with experience in vulnerability triage, PoC
+                        development, and responsible disclosure.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">HackerOne</span>
                         <span class="skill-tag">Bugcrowd</span>
@@ -1716,7 +1880,8 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>SOC Fundamentals</h3>
-                    <p>Understanding of Security Operations Center workflows, threat detection, incident response, and security monitoring.</p>
+                    <p>Understanding of Security Operations Center workflows, threat detection, incident response, and
+                        security monitoring.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">SIEM</span>
                         <span class="skill-tag">Log Analysis</span>
@@ -1728,7 +1893,8 @@
                         <i class="fas fa-industry"></i>
                     </div>
                     <h3>ICS/OT Security</h3>
-                    <p>Foundational knowledge in Industrial Control Systems and Operational Technology security assessments.</p>
+                    <p>Foundational knowledge in Industrial Control Systems and Operational Technology security
+                        assessments.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">SCADA</span>
                         <span class="skill-tag">PLCs</span>
@@ -1740,7 +1906,8 @@
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3>Physical Security Testing</h3>
-                    <p>Assessment of physical security controls including access control systems, social engineering, and physical penetration testing.</p>
+                    <p>Assessment of physical security controls including access control systems, social engineering,
+                        and physical penetration testing.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Lock Picking</span>
                         <span class="skill-tag">Social Engineering</span>
@@ -1757,11 +1924,12 @@
             <div class="section-header">
                 <span class="section-tag">&lt;experience&gt;</span>
                 <h2 class="section-title">Professional <span>Experience</span></h2>
-                <p class="section-subtitle">My journey in the cybersecurity industry and contributions to the community.</p>
+                <p class="section-subtitle">My journey in the cybersecurity industry and contributions to the community.
+                </p>
             </div>
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
-                
+
                 <div class="experience-item animate-on-scroll">
                     <div class="experience-dot"></div>
                     <div class="experience-card">
@@ -1773,10 +1941,14 @@
                             <span class="experience-date">2025 – Present</span>
                         </div>
                         <ul class="experience-list">
-                            <li>Led penetration testing and vulnerability assessment engagements for multiple organizations handling sensitive data</li>
-                            <li>Planned and executed end-to-end VAPT activities, including scoping, exploitation, validation, and reporting</li>
-                            <li>Coordinated task distribution, findings verification, and final report delivery within the security team</li>
-                            <li>Ensured responsible disclosure practices and alignment with client security and compliance requirements</li>
+                            <li>Led penetration testing and vulnerability assessment engagements for multiple
+                                organizations handling sensitive data</li>
+                            <li>Planned and executed end-to-end VAPT activities, including scoping, exploitation,
+                                validation, and reporting</li>
+                            <li>Coordinated task distribution, findings verification, and final report delivery within
+                                the security team</li>
+                            <li>Ensured responsible disclosure practices and alignment with client security and
+                                compliance requirements</li>
                         </ul>
                     </div>
                 </div>
@@ -1792,11 +1964,16 @@
                             <span class="experience-date">2024 – Present</span>
                         </div>
                         <ul class="experience-list">
-                            <li>Designed and delivered structured cybersecurity and ethical hacking training modules</li>
-                            <li>Conducted hands-on sessions covering Linux, OSINT, Networking, Web App Pentesting, SOC, and ICS/OT security</li>
-                            <li>Built and maintained practical lab environments simulating real-world attack and defense scenarios</li>
-                            <li>Organized recurring CTF competitions to enhance offensive security and problem-solving skills</li>
-                            <li>Delivered campus-wide cybersecurity awareness sessions focused on cyber hygiene and data protection</li>
+                            <li>Designed and delivered structured cybersecurity and ethical hacking training modules
+                            </li>
+                            <li>Conducted hands-on sessions covering Linux, OSINT, Networking, Web App Pentesting, SOC,
+                                and ICS/OT security</li>
+                            <li>Built and maintained practical lab environments simulating real-world attack and defense
+                                scenarios</li>
+                            <li>Organized recurring CTF competitions to enhance offensive security and problem-solving
+                                skills</li>
+                            <li>Delivered campus-wide cybersecurity awareness sessions focused on cyber hygiene and data
+                                protection</li>
                         </ul>
                     </div>
                 </div>
@@ -1813,7 +1990,8 @@
                         </div>
                         <ul class="experience-list">
                             <li>Delivered online training on Ethical Hacking and Network Penetration Testing</li>
-                            <li>Developed recorded video content covering both foundational and advanced security topics</li>
+                            <li>Developed recorded video content covering both foundational and advanced security topics
+                            </li>
                             <li>Guided students through hands-on exploitation labs and simulated attack scenarios</li>
                             <li>Provided active mentorship through live problem-solving sessions and Q&A</li>
                         </ul>
@@ -1831,9 +2009,12 @@
                             <span class="experience-date">2024-2026</span>
                         </div>
                         <ul class="experience-list">
-                            <li>Conducted hands-on sessions on network forensics and web application security at MBSTU, USTC, and Sonargaon University</li>
-                            <li>Trained students to analyze network traffic, identify attack patterns, and test web applications</li>
-                            <li>Covered packet analysis, HTTP traffic inspection, OWASP vulnerabilities, and bug bounty methodologies</li>
+                            <li>Conducted hands-on sessions on network forensics and web application security at MBSTU,
+                                USTC, and Sonargaon University</li>
+                            <li>Trained students to analyze network traffic, identify attack patterns, and test web
+                                applications</li>
+                            <li>Covered packet analysis, HTTP traffic inspection, OWASP vulnerabilities, and bug bounty
+                                methodologies</li>
                         </ul>
                     </div>
                 </div>
@@ -1867,7 +2048,9 @@
                             <span>Red Team</span>
                         </div>
                         <p class="project-description">
-                            Static analysis tool to scan Windows PE files for shellcode injection characteristics. Checks digital signatures, entropy, and code caves for red team planning and malware analysis.
+                            Static analysis tool to scan Windows PE files for shellcode injection characteristics.
+                            Checks digital signatures, entropy, and code caves for red team planning and malware
+                            analysis.
                         </p>
                     </div>
                 </div>
@@ -1889,7 +2072,8 @@
                             <span>Telegram</span>
                         </div>
                         <p class="project-description">
-                            GitHub repository scanner that detects credentials and sensitive patterns using the GitHub API. Supports bulk scanning, custom filters, JSON output, and Telegram notifications.
+                            GitHub repository scanner that detects credentials and sensitive patterns using the GitHub
+                            API. Supports bulk scanning, custom filters, JSON output, and Telegram notifications.
                         </p>
                     </div>
                 </div>
@@ -1911,7 +2095,8 @@
                             <span>Subdomain Enum</span>
                         </div>
                         <p class="project-description">
-                            Passive subdomain enumeration tool that gathers subdomains without API keys or external dependencies. Optimized for speed and low fingerprinting in penetration testing.
+                            Passive subdomain enumeration tool that gathers subdomains without API keys or external
+                            dependencies. Optimized for speed and low fingerprinting in penetration testing.
                         </p>
                     </div>
                 </div>
@@ -2138,6 +2323,93 @@
         </div>
     </section>
 
+    <!-- Blogs Section -->
+    <section id="blogs">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">&lt;writeups&gt;</span>
+                <h2 class="section-title">Latest <span>Blogs</span></h2>
+                <p class="section-subtitle">Deep dives into security research, bug hunting, and technical write-ups.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <i class="fab fa-medium"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            Disclosing CVE-2025-70849
+                            <a href="https://medium.com/@kazixabbir/disclosing-cve-2025-70849-a-lesson-in-persistence-and-stored-xss-f245eae9237e"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </h3>
+                        <div class="project-tech">
+                            <span>CVE</span>
+                            <span>Stored XSS</span>
+                        </div>
+                        <p class="project-description">
+                            A lesson in persistence and stored XSS. A detailed walkthrough of my journey to discovering
+                            and disclosing CVE-2025-70849.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <i class="fab fa-medium"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            Win an IDOR Bug
+                            <a href="https://medium.com/@kazixabbir/reverse-engineering-upload-names-to-win-an-idor-bug-296f7e068c1a"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </h3>
+                        <div class="project-tech">
+                            <span>IDOR</span>
+                            <span>Reverse Eng.</span>
+                        </div>
+                        <p class="project-description">
+                            Reverse engineering upload names to win an IDOR bug. Techniques and methodologies for
+                            uncovering broken object-level authorization.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <i class="fab fa-medium"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            Cyber Law in BD
+                            <a href="https://medium.com/@kazixabbir/cybersecurity-law-in-bangladesh-2026-fa1cd6b468c2"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </h3>
+                        <div class="project-tech">
+                            <span>Policy</span>
+                            <span>Bangladesh</span>
+                        </div>
+                        <p class="project-description">
+                            An overview of the Cybersecurity Law in Bangladesh as of 2026, exploring legal frameworks
+                            and digital security acts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://medium.com/@kazixabbir" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-medium-m"></i>
+                    Read More on Medium
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Education Section -->
     <section id="education">
         <div class="section-container">
@@ -2186,7 +2458,8 @@
             <div class="contact-container">
                 <div class="contact-info animate-on-scroll">
                     <h3>Let's Work Together</h3>
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
+                        vision.</p>
                     <div class="contact-links">
                         <a href="mailto:kazixabbir@gmail.com" class="contact-link">
                             <i class="fas fa-envelope"></i>
@@ -2241,12 +2514,14 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                            <textarea id="message" name="message" placeholder="Your message here..."
+                                required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
+                        <div id="formStatus" class="form-status"></div>
                     </form>
                 </div>
             </div>
@@ -2335,7 +2610,7 @@
 
         function typeEffect() {
             const currentText = typingTexts[textIndex];
-            
+
             if (isDeleting) {
                 typingElement.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
@@ -2381,7 +2656,7 @@
         function openModal(certId) {
             const modal = document.getElementById('certModal');
             const modalImage = document.getElementById('modalImage');
-            
+
             // Map certificate IDs to image paths
             // Replace these with your actual certificate image paths
             const certImages = {
@@ -2409,23 +2684,141 @@
             }
         });
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
+        // Form submission with Formspree
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show an alert
-            alert('Thank you for your message! I will get back to you soon.');
-            e.target.reset();
+
+            const formData = new FormData(contactForm);
+            const originalBtnContent = submitBtn.innerHTML;
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            formStatus.className = 'form-status'; // Reset status
+            formStatus.style.display = 'none';
+
+            try {
+                const response = await fetch('https://formspree.io/f/mpqjjnqg', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        formStatus.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        formStatus.textContent = 'Oops! There was a problem submitting your form.';
+                    }
+                    formStatus.className = 'form-status error';
+                }
+            } catch (error) {
+                formStatus.textContent = 'Oops! There was a problem connecting to the server.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+                formStatus.style.display = 'block';
+            }
+        });
+
+        // High-end Cursor Logic
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorOutline = document.getElementById('cursorOutline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Interactive states for cursor
+        const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-card, .cert-card, .contact-link, .experience-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + "%";
+        });
+
+        // Text Scramble Class
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) { char = this.randomChar(); this.queue[i].char = char; }
+                        output += `<span style="color: var(--primary); opacity: 0.5;">${char}</span>`;
+                    } else { output += from; }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) { this.resolve(); }
+                else { this.frameRequest = requestAnimationFrame(this.update); this.frame++; }
+            }
+            randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
+        }
+
+        // Apply to section titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            const fx = new TextScramble(title);
+            const originalText = title.innerText;
+            title.addEventListener('mouseenter', () => fx.setText(originalText));
         });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -2438,7 +2831,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-
